@@ -16,23 +16,28 @@ function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
+//вынесла повторение кода в отдельную ф-цию
+function changeAttr(objAddAttr, objRemoveAttr) {
+    
+    //info -> element.setAttribute(name, value);
+    objAddAttr.setAttribute('disabled', true);
+    objRemoveAttr.removeAttribute('disabled');
+}
+
 //обработчики событий
 function onStartChangeBgColor() {
 
-   intervalId = setInterval(() => {
+    intervalId = setInterval(() => {
         const color = getRandomHexColor();
-       refs.body.style.backgroundColor = color;
-         //element.setAttribute(name, value);
-       refs.startBtn.setAttribute('disabled', true);
-       refs.stopBtn.removeAttribute('disabled');
+        refs.body.style.backgroundColor = color;
+        changeAttr(refs.startBtn, refs.stopBtn)
     }, 1000)
 }
 
 function onStopChangeBgColor() {
 
     clearInterval(intervalId);
-    refs.startBtn.removeAttribute('disabled');
-    refs.stopBtn.setAttribute('disabled', true);   
+    changeAttr(refs.stopBtn, refs.startBtn);
 }
 
 
