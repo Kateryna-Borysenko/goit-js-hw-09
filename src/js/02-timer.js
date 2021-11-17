@@ -1,6 +1,5 @@
 import flatpickr from 'flatpickr'; // импорт самой библиотеки
 import 'flatpickr/dist/flatpickr.min.css'; //стили библиотеки
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Notiflix from 'notiflix';
 
 const options = { //настройка
